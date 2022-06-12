@@ -3,9 +3,6 @@ import { rename, lstat, access } from "fs/promises";
 import { basename, dirname } from "path";
 
 export const rn = async (args) => {
-  const path = buildPath(args[0]);
-  const newPath = buildPath(dirname(path), args[1]);
-
   try {
     if (args.length > 2)
       throw new Error("only two command arguments are required");
@@ -14,6 +11,9 @@ export const rn = async (args) => {
       throw new Error(
         "second command argument should be a valid name, NOT the path"
       );
+
+    const path = buildPath(args[0]);
+    const newPath = buildPath(dirname(path), args[1]);
 
     const stat = await lstat(path);
     if (stat.isDirectory())
@@ -25,7 +25,7 @@ export const rn = async (args) => {
     throw new Error("file with this name exists, use another name");
   } catch (e) {
     if (e.syscall === "access" && e.code === "ENOENT") {
-      await rename(args[0], newPath);
+      await rename(args[0], buildPath(dirname(buildPath(args[0])), args[1]));
     } else {
       printMessage({ type: "error", payload: e });
     }

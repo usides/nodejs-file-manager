@@ -1,6 +1,5 @@
 import { printMessage, buildPath } from "../utils.js";
-import { rm as remove, lstat, access } from "fs/promises";
-import { basename, dirname } from "path";
+import { rm as remove, lstat } from "fs/promises";
 
 export const rm = async (args) => {
   try {

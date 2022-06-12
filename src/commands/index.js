@@ -8,3 +8,4 @@ export { rm } from "./rm.js";
 export { cp } from "./cp.js";
 export { os } from "./os.js";
 export { hash } from "./hash.js";
+export { brotli } from "./brotli.js";
