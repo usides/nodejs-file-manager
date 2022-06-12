@@ -1,6 +1,4 @@
-import { printMessage, buildPath } from "../utils.js";
-import { rm as remove, lstat, access } from "fs/promises";
-import { basename, dirname } from "path";
+import { printMessage } from "../utils.js";
 import { EOL, cpus, arch, homedir, userInfo } from "os";
 
 export const os = async (args) => {

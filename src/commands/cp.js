@@ -18,6 +18,7 @@ export const cp = (args, isDeleteOrigin) => {
       if (isDeleteOrigin) await rm(origin);
       printMessage({ type: "currentDir" });
     });
+
     readStream.on("error", (e) => {
       printMessage({ type: "error", payload: e });
       printMessage({ type: "currentDir" });
