@@ -3,7 +3,7 @@ import { chdir } from "process";
 import { homedir } from "os";
 
 import { printMessage, parseInput } from "./utils.js";
-import { ls, up, cd, cat, add, rn, rm, cp } from "./commands/index.js";
+import { ls, up, cd, cat, add, rn, rm, cp, os } from "./commands/index.js";
 import { input, output } from "./constants.js";
 
 console.clear();
@@ -58,6 +58,9 @@ const cliTransformer = new Transform({
             break;
           case "mv":
             cp(args, true);
+            break;
+          case "os":
+            os(args);
             break;
           default:
             printMessage({ type: "invalid" });
